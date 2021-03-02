@@ -3,4 +3,4 @@ function! s:sql_db_complete(arg,line,pos)
 	return join(commands, "\n")
 endfunction
 
-command -range=% -nargs=+ -complete=custom,s:sql_db_complete QUERY lua require('query_nvim').runner(<f-args>)
+command -range=% -nargs=+ -complete=custom,s:sql_db_complete Query lua require('query_nvim').runner(<f-args>)
