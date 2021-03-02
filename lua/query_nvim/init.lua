@@ -54,12 +54,12 @@ function query_nvim.runner(cmd, ...)
 		return
 	end
 
-	if cmd == "selection" then
+	if cmd == "visual" then
 		query_nvim.run_query_on_selection()
 		return
 	end
 
-	if cmd == "selection_r" then
+	if cmd == "visual_r" then
 		query_nvim.run_query_on_selection_r(util.join(args))
 		return
 	end
