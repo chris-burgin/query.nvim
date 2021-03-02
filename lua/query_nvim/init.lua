@@ -1,4 +1,5 @@
 local util = require('query_nvim/util')
+local connectors = require('query_nvim/connectors')
 
 local query_nvim = {}
 query_nvim.opts = {}
@@ -8,16 +9,7 @@ function query_nvim.run_query(query)
 
 	util.run_job({
 		command = 'mysql',
-		args = {
-			'--table',
-			'-u',
-			'root',
-			'-h',
-			query_nvim.opts.db.host,
-			'-e',
-			query,
-			query_nvim.opts.db.database,
-		},
+		args = connectors.mysql(query_nvim.opts.db, query),
 		on_stdout = vim.schedule_wrap(function (_, line)
 			table.insert(lines, line)
 		end),
