@@ -40,7 +40,7 @@ function query_nvim.run_query_on_selection_r(args)
 	local query = util.get_query(query_nvim.opts);
 
 	for _, replacement in ipairs(replacements) do
-		query = query:gsub("?", replacement)
+		query = query:gsub("?", replacement, 1)
 	end
 
 	query_nvim.run_query(query)
