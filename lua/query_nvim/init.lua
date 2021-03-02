@@ -71,7 +71,7 @@ function query_nvim.setup(opts)
 	end
 
 	if opts.query_buf == nil then
-		opts.query_buf = "="
+		opts.query_buf = "x"
 	end
 
 	if opts.db == nil then
