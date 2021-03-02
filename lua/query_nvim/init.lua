@@ -6,10 +6,12 @@ query_nvim.opts = {}
 
 function query_nvim.run_query(query)
 	local lines = {};
+	local db = query_nvim.opts.db
+	local connector = connectors.get(db.type).mysql(db, query)
 
 	util.run_job({
-		command = 'mysql',
-		args = connectors.mysql(query_nvim.opts.db, query),
+		command = connector.command,
+		args = connector.args,
 		on_stdout = vim.schedule_wrap(function (_, line)
 			table.insert(lines, line)
 		end),
@@ -68,6 +70,10 @@ function query_nvim.setup(opts)
 
 	if opts.db == nil then
 		error("opts.db was not provided to query_nvim.setup")
+	end
+
+	if opts.db.host == nil then
+		error("opts.db.type was not provided to query_nvim.setup")
 	end
 
 	if opts.db.host == nil then

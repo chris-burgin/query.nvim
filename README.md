@@ -15,6 +15,7 @@ Plug 'chris-burgin/query.nvim'
 ```lua
 require('query_nvim').setup({
   db = {
+		type = "mysql", -- mysql, redis
     host = "127.0.0.1",
     database = "demo"
   },
