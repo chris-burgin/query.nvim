@@ -7,7 +7,7 @@ query_nvim.opts = {}
 function query_nvim.run_query(query)
 	local lines = {};
 	local db = query_nvim.opts.db
-	local connector = connectors.get(db.type).mysql(db, query)
+	local connector = connectors.get(db.type)(db, query)
 
 	util.run_job({
 		command = connector.command,
