@@ -72,7 +72,7 @@ function query_nvim.setup(opts)
 		error("opts.db was not provided to query_nvim.setup")
 	end
 
-	if opts.db.host == nil then
+	if opts.db.type == nil then
 		error("opts.db.type was not provided to query_nvim.setup")
 	end
 
