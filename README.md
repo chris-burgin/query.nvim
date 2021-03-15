@@ -39,7 +39,7 @@ require('query_nvim').setup({
 
 ## Usage
 
-Type `:Query` to see a list of commands.
+Type `:Query` and hit `tab` to see a list of commands.
 
 | Command  | Description                                                                                                        |
 | -------- | ------------------------------------------------------------------------------------------------------------------ |
