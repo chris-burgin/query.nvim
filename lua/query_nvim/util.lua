@@ -63,17 +63,24 @@ function util.split_on_space(str)
 	return {str}
 end
 
-function util.join(list)
+function util.join(list, char)
+	char = char or " "
 	local str = "";
-		for key, substr in pairs(list) do
-			if key == 0 then
-				str = substr
-			else
-				str = str.." "..substr
-			end
+	for key, substr in pairs(list) do
+		if key == 1 then
+			str = substr
+		else
+			str = str..char..substr
 		end
+	end
 
 	return str
+end
+
+function util.table_length(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
 end
 
 return util
