@@ -41,11 +41,11 @@ require('query_nvim').setup({
 
 Type `:Query` to see a list of commands.
 
-| Command  | Description                                                                                                   |
-| -------- | ------------------------------------------------------------------------------------------------------------- |
-| query    | Runs the provided query. `:Query query [db.name] [query]`                                                     |
-| visual   | Runs the current Visual Selection as a query. `:Query visual [db.name]`                                       |
-| visual_r | Same as `selection` plus it accepts a list of replacements (`?`) as a CSV. Note strings must be wrapped in "" |
+| Command  | Description                                                                                                        |
+| -------- | ------------------------------------------------------------------------------------------------------------------ |
+| query    | Runs the provided query. `:Query query [db.name] [query]`                                                          |
+| visual   | Runs the current Visual Selection as a query. `:Query visual [db.name]`                                            |
+| visual_r | Same as `selection` plus it accepts a list of replacements (`?`) as a CSV. Note strings must be wrapped in quotes. |
 
 ### Examples
 
