@@ -2,6 +2,10 @@
 
 Run SQL queries from nvim. Query.nvim is a work in progress, expect things to change.
 
+### Supported Databases
+
+- mysql
+
 ## Installation
 
 ```viml
@@ -42,6 +46,8 @@ Type `:Query` to see a list of commands.
 | visual_r | Same as `selection` plus it accepts a list of replacements (`?`) as a CSV. Note strings must be wrapped in "" |
 
 ### Examples
+
+**Screenshots are out of date and do not show the required `db.name` param.**
 
 #### query
 
