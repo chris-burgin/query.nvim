@@ -4,7 +4,9 @@ Run SQL queries from nvim. Query.nvim is a work in progress, expect things to ch
 
 ### Supported Databases
 
-- mysql
+- [x] MySQL
+- [ ] PostgreSQL
+- [ ] Redis
 
 ## Installation
 
@@ -60,9 +62,3 @@ Type `:Query` to see a list of commands.
 #### visual_r
 
 ![replacement](https://user-images.githubusercontent.com/1278846/109590293-b9491b00-7ad9-11eb-8f1e-2aea4c9c9437.gif)
-
-## TODO
-
-- [ ] Support multiple databases
-- [ ] Support postgresql
-- [ ] Support redis
