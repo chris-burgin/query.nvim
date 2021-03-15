@@ -16,22 +16,9 @@ function connectors.mysql(db, query)
 	}
 end
 
-function connectors.redis(_, query)
-	return {
-		command = "redis-cli",
-		args = {
-			query,
-		},
-	}
-end
-
 function connectors.get(type)
 	if type == "mysql" then
 		return connectors.mysql
-	end
-
-	if type == "redis" then
-		return connectors.redis
 	end
 end
 
