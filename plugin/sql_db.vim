@@ -7,10 +7,10 @@ function! s:sql_db_complete(arg,line,pos)
 	let m = index(l, v_cmd)
 	let cmd = n_cmd
 	if m == 0
-   let cmd = v_cmd
+		let cmd = v_cmd
 	endif
 
-  let n = len(l) - index(l, cmd) - 2
+	let n = len(l) - index(l, cmd) - 2
 	return luaeval("require('query_nvim').complete_list(_A)", n)
 endfunction
 

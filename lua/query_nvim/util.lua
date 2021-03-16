@@ -7,7 +7,7 @@ local state = {
 }
 
 function util.run_job(job_spec)
-   Job:new(job_spec):start()
+		Job:new(job_spec):start()
 end
 
 function util.hold_and_restore_reg(reg)
@@ -78,9 +78,9 @@ function util.join(list, char)
 end
 
 function util.table_length(T)
-  local count = 0
-  for _ in pairs(T) do count = count + 1 end
-  return count
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
 end
 
 return util
