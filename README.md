@@ -34,13 +34,20 @@ require('query_nvim').setup({
 
 ### Connectors
 
+Connectors are provided to the `query_nvim` setup function.
+
+```lua
+local connectors = require('query_nvim/connectors')
+connectors.mysql(...config)
+```
+
 #### MySQL
 
-| Option   | Description                   | Required |
-| -------- | ----------------------------- | -------- |
-| user     | The database user             | yes      |
-| host     | The host on which to connect  | yes      |
-| database | The database to query against | yes      |
+| Config Param | Description                   | Required |
+| ------------ | ----------------------------- | -------- |
+| user         | The database user             | yes      |
+| host         | The host on which to connect  | yes      |
+| database     | The database to query against | yes      |
 
 #### Custom
 
