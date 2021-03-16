@@ -2,12 +2,6 @@
 
 Run SQL queries from nvim. Query.nvim is a work in progress, expect things to change.
 
-### Supported Databases
-
-- [x] MySQL
-- [ ] PostgreSQL
-- [ ] Redis
-
 ## Installation
 
 ```viml
@@ -37,6 +31,20 @@ require('query_nvim').setup({
   },
 })
 ```
+
+### Connectors
+
+#### MySQL
+
+| Option   | Description                   | Required |
+| -------- | ----------------------------- | -------- |
+| user     | The database user             | yes      |
+| host     | The host on which to connect  | yes      |
+| database | The database to query against | yes      |
+
+#### Custom
+
+To define a custom connector for a database not supported look at [connectors.lua](./lua/query_nvim/connectors.lua) for examples.
 
 ## Usage
 
