@@ -1,6 +1,6 @@
 # query.nvim
 
-Run SQL queries from nvim. Query.nvim is a work in progress, expect things to change.
+Run database queries from nvim. Query.nvim is a work in progress, expect things to change.
 
 ## Installation
 
