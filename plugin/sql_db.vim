@@ -1,6 +1,9 @@
 function! s:sql_db_complete(arg,line,pos)
+	" The good parts of this were stolen from telescope. The bad parts I
+	" wrote myself.
 	let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
 
+	" TODO: Need to do this a better way.
 	let n_cmd = "Query"
 	let v_cmd = "'<,'>Query"
 

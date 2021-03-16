@@ -2,9 +2,8 @@ local util = require('query_nvim/util')
 local connectors = require('query_nvim/connectors')
 
 local query_nvim = {
-	connectors = connectors
+	opts = {}
 }
-query_nvim.opts = {}
 
 function find_connector(db_name)
 	for key, db in pairs(query_nvim.opts.db) do
@@ -70,6 +69,7 @@ function query_nvim.runner(cmd, db_name, ...)
 	end
 end
 
+-- TODO: should be seperated from the query logic above, one or the other needs to go
 function query_nvim.setup(opts)
 	if opts == nil then
 		error("query_nvim.setup, opts was not provided")
@@ -86,6 +86,7 @@ function query_nvim.setup(opts)
 	query_nvim.opts = opts;
 end
 
+-- TODO: Needs to go somewhere else
 function query_nvim.complete_list(n)
 	if n == 0 then
 		return "query\nvisual\nvisual_r"

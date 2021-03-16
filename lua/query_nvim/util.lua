@@ -1,7 +1,9 @@
+-- TODO: I want to drop the dep for now
 local Job = require('plenary/job')
 
 local util = {}
 
+-- TODO: Weird to have this global inside of the util. Maybe it needs its own file or maybe theres a better way to do this?
 local state = {
 	buf = nil
 }
@@ -79,7 +81,9 @@ end
 
 function util.table_length(T)
 	local count = 0
-	for _ in pairs(T) do count = count + 1 end
+	for _ in pairs(T) do 
+		count = count + 1 
+	end
 	return count
 end
 
