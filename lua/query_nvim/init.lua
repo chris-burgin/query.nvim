@@ -1,29 +1,24 @@
 local util = require('query_nvim/util')
 local connectors = require('query_nvim/connectors')
 
-local query_nvim = {}
+local query_nvim = {
+	connectors = connectors
+}
 query_nvim.opts = {}
 
-function find_db_config(db_name)
-	local db_config = nil
-	for i, db in pairs(query_nvim.opts.db) do
-		if db.name == db_name then
-			db_config = db;
-			break
+function find_connector(db_name)
+	for key, db in pairs(query_nvim.opts.db) do
+		if key == db_name then
+			return db
 		end
 	end
 
-	if db_config == nil then
-		error("No db with the name "..db_name.." provided.")
-	end
-
-	return db_config
+	error("No db with the key "..db_name.." provided.")
 end
 
 function query_nvim.run_query(db_name, query)
 	local lines = {};
-	local db = find_db_config(db_name)
-	local connector = connectors.get(db.type)(db, query)
+	local connector = find_connector(db_name)(query)
 
 	util.run_job({
 		command = connector.command,
@@ -77,7 +72,7 @@ end
 
 function query_nvim.setup(opts)
 	if opts == nil then
-		error("opts where not provided to query_nvim.setup")
+		error("query_nvim.setup, opts was not provided")
 	end
 
 	if opts.query_buf == nil then
@@ -85,25 +80,7 @@ function query_nvim.setup(opts)
 	end
 
 	if opts.db == nil then
-		error("opts.db was not provided to query_nvim.setup")
-	end
-
-	for i, db in pairs(opts.db) do
-		if db.name == nil then
-			error("opts.db["..i.."].type was not provided to query_nvim.setup")
-		end
-
-		if db.type == nil then
-			error("opts.db["..i.."].type was not provided to query_nvim.setup")
-		end
-
-		if db.host == nil then
-			error("opts.db["..i.."].host was not provided to query_nvim.setup")
-		end
-
-		if db.database == nil then
-			error("opts.db["..i.."].database was not provided to query_nvim.setup")
-		end
+		error("query_nvim.setup, opts.db was not provided")
 	end
 
 	query_nvim.opts = opts;
@@ -115,13 +92,18 @@ function query_nvim.complete_list(n)
 	end
 
 	if n == 1 then
+		local getFirstItem = false;
 		if util.table_length(query_nvim.opts.db) == 1 then
-			return query_nvim.opts.db[1].name
+			getFirstItem = true;
 		end
 
 		local names = {}
-		for _, db in pairs(query_nvim.opts.db) do
-			table.insert(names, db.name)
+		for db_name, _ in pairs(query_nvim.opts.db) do
+			if getFirstItem then
+				return db_name
+			end
+
+			table.insert(names, db_name)
 		end
 		return util.join(names, "\n")
 	end

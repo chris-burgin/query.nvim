@@ -1,24 +1,32 @@
 local connectors = {}
 
-function connectors.mysql(db, query)
-	return {
-		command = "mysql",
-		args = {
-			'--table',
-			'-u',
-			'root',
-			'-h',
-			db.host,
-			'-e',
-			query,
-			db.database,
-		},
-	}
-end
+function connectors.mysql(config)
+	if config.user == nil then
+		error("connectors.mysql, config.user was not provided")
+	end
 
-function connectors.get(type)
-	if type == "mysql" then
-		return connectors.mysql
+	if config.host == nil then
+		error("connectors.mysql, config.host was not provided")
+	end
+
+	if config.database == nil then
+		error("connectors.mysql, config.database was not provided")
+	end
+
+	return function(query)
+		return {
+			command = "mysql",
+			args = {
+				'--table',
+				'-u',
+				config.user,
+				'-h',
+				config.host,
+				'-e',
+				query,
+				config.database,
+			},
+		}
 	end
 end
 

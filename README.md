@@ -19,20 +19,21 @@ Plug 'chris-burgin/query.nvim'
 ## Setup
 
 ```lua
+local query_nvim = require("query_nvim")
+local connectors = require('query_nvim/connectors')
+
 require('query_nvim').setup({
   db = {
-    {
-      name = "demo",
-      type = "mysql",
-      host = "127.0.0.1",
-      database = "demo"
-    },
-    {
-      name = "demo2",
-      type = "mysql",
-      host = "127.0.0.1",
-      database = "demo2"
-    }
+    test = connectors.mysql({
+        user = "root",
+        host = "127.0.0.1",
+        database = "test",
+    }),
+    demo = connectors.mysql({
+        user = "root",
+        host = "127.0.0.1",
+        database = "demo",
+    }),
   },
 })
 ```
