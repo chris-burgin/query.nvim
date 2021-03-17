@@ -46,6 +46,7 @@ connectors.mysql(...config)
 | Config Param | Description                   | Required |
 | ------------ | ----------------------------- | -------- |
 | user         | The database user             | yes      |
+| password     | Password for the user         | no       |
 | host         | The host on which to connect  | yes      |
 | database     | The database to query against | yes      |
 

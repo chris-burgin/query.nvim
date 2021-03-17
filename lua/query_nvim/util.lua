@@ -55,7 +55,7 @@ end
 
 function util.split_on_space(str)
 	if string.find(str, ",") then
-		chunks = {}
+		local chunks = {}
 		for substring in str.gmatch(str, '([^,]+)') do
 			 table.insert(chunks, substring)
 		end
@@ -81,10 +81,22 @@ end
 
 function util.table_length(T)
 	local count = 0
-	for _ in pairs(T) do 
-		count = count + 1 
+	for _ in pairs(T) do
+		count = count + 1
 	end
 	return count
+end
+
+function util.concat_tables(...)
+	local args={...}
+	local new_table = {}
+	for _, tbl in ipairs(args) do
+		for _, entry in ipairs(tbl) do
+			table.insert(new_table, entry)
+		end
+	end
+
+	return new_table
 end
 
 return util

@@ -1,3 +1,5 @@
+local util = require('query_nvim/util')
+
 local connectors = {}
 
 function connectors.mysql(config)
@@ -14,18 +16,38 @@ function connectors.mysql(config)
 	end
 
 	return function(query)
+		local options = {
+			'--table',
+		}
+
+		local user = {
+			'-u',
+			config.user,
+		}
+
+		local password = {}
+		if config.password ~= nil then
+			password = {
+				"-p"..config.password
+			}
+		end
+
+		local host = {
+			'-h',
+			config.host,
+		}
+
+		local db_query = {
+			'-e',
+			query,
+			config.database,
+		}
+
+		local args = util.concat_tables(options, user, password, host, db_query)
+
 		return {
 			command = "mysql",
-			args = {
-				'--table',
-				'-u',
-				config.user,
-				'-h',
-				config.host,
-				'-e',
-				query,
-				config.database,
-			},
+			args = args
 		}
 	end
 end
