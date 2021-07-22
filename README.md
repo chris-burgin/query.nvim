@@ -66,7 +66,7 @@ Type `:Query` and hit `tab` to see a list of commands.
 
 ### Examples
 
-**Screenshots are out of date and do not show the required `db.name` param.**
+❗ Screenshots are out of date and do not show the required `db.name` param. ❗
 
 #### query
 
